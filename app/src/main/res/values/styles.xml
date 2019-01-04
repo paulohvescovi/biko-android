@@ -1,0 +1,102 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="ThemeOverlay.MaterialComponents.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.Activity" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textSize">13sp</item>
+
+        <!--dialog-->
+        <item name="md_background_color">@color/interfacesBackgroundColor</item>
+        <item name="md_color_title">@color/textViewTextColor</item>
+        <item name="md_color_content">@color/textViewTextColor</item>
+        <item name="md_font_title">@font/comfortaa</item>
+        <item name="md_font_body">@font/comfortaa_light</item>
+        <item name="md_font_button">@font/comfortaa</item>
+        <item name="md_corner_radius">16dp</item>
+    </style>
+
+    <style name="Dialog" parent="@android:style/Theme.Dialog">
+        <!--affolested-->
+        <item name="md_corner_radius">16dp</item>
+        <item name="md_ripple_color">@color/interfacesBackgroundColor</item>
+        <item name="md_color_title">@color/textViewTextColor</item>
+        <item name="md_color_content">@color/textViewTextColor</item>
+        <item name="md_font_title">@font/comfortaa</item>
+        <item name="md_font_body">@font/comfortaa_light</item>
+        <item name="md_font_button">@font/comfortaa_bold</item>
+
+    </style>
+
+    <style name="FloatActionButton" parent="Widget.Design.FloatingActionButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="TextView">
+        <item name="android:textColor">@color/textViewTextColor</item>
+        <item name="fontFamily">@font/comfortaa_light</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="TextViewInverse" parent="@style/TextView">
+        <item name="android:textColor">@color/textViewTextColorInverse</item>
+    </style>
+
+    <style name="TextViewBig" parent="TextView">
+        <item name="android:textSize">24sp</item>
+        <item name="fontFamily">@font/comfortaa_bold</item>
+    </style>
+
+    <style name="TextViewBigInverse" parent="TextViewInverse">
+        <item name="android:textSize">24sp</item>
+        <item name="fontFamily">@font/comfortaa_bold</item>
+    </style>
+
+    <style name="EditTextLarge" parent="EditText">
+        <item name="android:layout_height">60dp</item>
+    </style>
+
+    <style name="EditText">
+        <item name="android:textColor">@color/editTextTextColor</item>
+        <item name="android:textColorHint">@color/editTexthintColor</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:elevation">5dp</item>
+        <item name="android:background">@drawable/edit_text_rounded</item>
+        <item name="android:fontFamily">@font/comfortaa_light</item>
+        <item name="android:paddingLeft">20dp</item>
+    </style>
+
+    <style name="Button" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:text">@string/action</item>
+        <item name="android:fontFamily">@font/comfortaa</item>
+        <item name="cornerRadius">30dp</item>
+    </style>
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="ProgressBar" parent="Base.Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminate">true</item>
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:indeterminateTint">@color/colorPrimary</item>
+        <item name="android:indeterminateTintMode">src_in</item>
+    </style>
+</resources>

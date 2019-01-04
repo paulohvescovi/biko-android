@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="paulo.com.br.bico.viewmodel.LoginViewModel" />
+        <import type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:id="@+id/layout_base"
+        android:layout_height="match_parent"
+        tools:context=".ui.activity.LoginActivity">
+
+        <View
+            android:id="@+id/view_background"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view_topo"
+            android:layout_width="0dp"
+            android:layout_height="170dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/interfacesBackgroundColor"
+            app:layout_constraintBottom_toBottomOf="@+id/view_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageview_logo_app"
+            android:layout_width="100dp"
+            android:layout_height="130dp"
+            android:layout_marginTop="60dp"
+            android:src="@drawable/ic_map_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.04000002" />
+
+        <TextView
+            android:id="@+id/text_view_sigin"
+            style="@style/TextViewBigInverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/acessar"
+            app:layout_constraintBottom_toBottomOf="@+id/view_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageview_logo_app"
+            app:layout_constraintVertical_bias="0.10000002" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_usuario"
+            style="@style/EditTextLarge"
+            android:layout_width="300dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:drawableStart="@drawable/ic_usuario_login"
+            android:drawablePadding="10dp"
+            android:hint="@string/email_or_user"
+            android:inputType="textEmailAddress"
+            android:text="@={viewModel.usuario.email}"
+            app:layout_constraintBottom_toBottomOf="@+id/view_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_sigin"
+            app:layout_constraintVertical_bias="0.060000002" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text_senha"
+            style="@style/EditTextLarge"
+            android:layout_marginTop="12dp"
+            android:drawableStart="@drawable/ic_senha_login"
+            android:drawablePadding="10dp"
+            android:hint="@string/senha"
+            android:inputType="textPassword"
+            android:text="@={viewModel.usuario.senha}"
+            app:layout_constraintEnd_toEndOf="@+id/edit_text_usuario"
+            app:layout_constraintStart_toStartOf="@+id/edit_text_usuario"
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_usuario" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_login"
+            style="@style/Button"
+            android:layout_marginTop="24dp"
+            android:onClick="@{(v) -> viewModel.logar()}"
+            android:text="@string/entrar"
+            app:layout_constraintEnd_toEndOf="@+id/edit_text_senha"
+            app:layout_constraintStart_toStartOf="@+id/edit_text_senha"
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_senha" />
+
+
+        <TextView
+            android:id="@+id/text_view_esqueceu_senha"
+            style="@style/TextViewInverse"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/esqueceu_sua_senha"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_login" />
+
+        <TextView
+            android:id="@+id/text_view_registrar_se"
+            style="@style/TextViewInverse"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/registrar_se"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_esqueceu_senha" />
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_facebook"
+            style="@style/FloatActionButton"
+            android:layout_margin="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fab_instagram"
+            app:layout_constraintHorizontal_bias="0.96"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_registrar_se"
+            app:srcCompat="@drawable/facebook_fab" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_instagram"
+            style="@style/FloatActionButton"
+            android:layout_margin="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_registrar_se"
+            app:srcCompat="@drawable/instagran_fab" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_google"
+            style="@style/FloatActionButton"
+            android:layout_margin="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.04"
+            app:layout_constraintStart_toEndOf="@+id/fab_instagram"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_registrar_se"
+            app:srcCompat="@drawable/google_fab" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

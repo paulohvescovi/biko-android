@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Biko</string>
+    <string name="breeds_title">Raças de cães</string>
+
+    <string name="breed_empty">Nenhuma raça disponível :(</string>
+    <string name="breed_failed">Uma falha inesperada aconteceu =/, toque aqui para tentar novamente </string>
+    <string name="title_activity_login">ACTIVITYMAINS</string>
+    <string name="seja_bem_vindo">Seja bem vindo ao App</string>
+    <string name="email_or_user">Usuário ou Email</string>
+    <string name="senha">Senha</string>
+    <string name="action">Action</string>
+    <string name="entrar">Login</string>
+    <string name="ok">OK</string>
+    <string name="validacao">Validação</string>
+    <string name="informe_o_usuario">Informe o usuário</string>
+    <string name="informe_a_senha">Informe a senha</string>
+    <string name="acessando_o_sistema">Acessando o sistema</string>
+    <string name="aguarde">Aguarde</string>
+    <string name="senha_invalida">Senha Inválida</string>
+    <string name="teste">TEste</string>
+    <string name="ola">Olá</string>
+    <string name="acessar">Bem vindo</string>
+    <string name="esqueceu_sua_senha"><u>Esqueceu sua senha?</u></string>
+    <string name="registrar_se"><u>Cadastrar-se</u></string>
+    <string name="erro">Erro</string>
+    <string name="ocorreu_erro_comunicacao_servidor">Ocorreu um erro de comunicação com o Servidor</string>
+</resources>
