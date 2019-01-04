@@ -15,12 +15,9 @@ class LoginViewModel (val usuarioService: UsuarioService, application: Applicati
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun load() {
-        //carregar usuario do banc de dados
-//        GlobalScope.launch (Dispatchers.IO){
-//            toast("Hello it has started")
-//            delay(10,TimeUnit.SECONDS)
-//            textView.text = "I have changed after 10 seconds"
-//        }
+        usuarioService.find(success = {
+            usuario.value = it
+        })
     }
 
     fun logar():Unit {

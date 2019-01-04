@@ -1,7 +1,10 @@
 package paulo.com.br.bico.service.impl
 
+import android.content.Context
+import android.database.sqlite.SQLiteConstraintException
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import paulo.com.br.bico.configuration.AppDatabase
 import paulo.com.br.bico.configuration.Constants
 import paulo.com.br.bico.configuration.CoroutinesScope
 import paulo.com.br.bico.entity.Usuario
@@ -9,15 +12,34 @@ import paulo.com.br.bico.model.UserCredentials
 import paulo.com.br.bico.repository.remote.UsuarioRemoteRepository
 import paulo.com.br.bico.repository.remote.WebserviceApi
 import paulo.com.br.bico.service.UsuarioService
-import retrofit2.HttpException
+import java.lang.Exception
 
-class UsuarioServiceImpl private constructor(): UsuarioService, CoroutinesScope() {
+class UsuarioServiceImpl private constructor(context: Context): UsuarioService, CoroutinesScope() {
 
     val usuarioRemoteRepository = WebserviceApi.get().createService(UsuarioRemoteRepository::class.java)
+    val usuarioLocalRepository = AppDatabase.get(context).usuarioDao()
 
     companion object {
-        fun get(): UsuarioServiceImpl {
-            return UsuarioServiceImpl()
+        fun get(context: Context): UsuarioServiceImpl {
+            return UsuarioServiceImpl(context)
+        }
+    }
+
+    override fun save(usuario: Usuario) {
+        try {
+            usuarioLocalRepository.insert(usuario)
+        } catch (exception: SQLiteConstraintException){
+            usuarioLocalRepository.update(usuario)
+        }
+    }
+
+    override fun find(success: (Usuario) -> Unit, failure: () -> Unit) {
+        scopeAsync.async {
+            val usuario = try { usuarioLocalRepository.find() } catch (e: Exception){ null }
+            scopeUI.launch {
+                if (usuario != null) success(usuario) else failure()
+            }
+
         }
     }
 
@@ -35,8 +57,12 @@ class UsuarioServiceImpl private constructor(): UsuarioService, CoroutinesScope(
                     val requestUsuarioLogado = usuarioRemoteRepository.usuarioLogadoServidor(responseLogin.body()!!.string())
                     val responseUsuarioLogado = requestUsuarioLogado.await()
 
+                    val usuario = responseUsuarioLogado.body()!!
+                    usuario.id = 1
+                    save(usuario)
+
                     scopeUI.launch {
-                        success(responseUsuarioLogado.body()!!)
+                        success(usuario)
                     }
 
                 }
@@ -47,5 +73,4 @@ class UsuarioServiceImpl private constructor(): UsuarioService, CoroutinesScope(
             }
         }
     }
-
 }

@@ -14,6 +14,7 @@ import paulo.com.br.bico.R
 import paulo.com.br.bico.databinding.LoginFragmentBinding
 import paulo.com.br.bico.extensions.showAlert
 import paulo.com.br.bico.extensions.showLoading
+import paulo.com.br.bico.service.UsuarioService
 import paulo.com.br.bico.service.impl.UsuarioServiceImpl
 import paulo.com.br.bico.ui.states.LoginState
 import paulo.com.br.bico.viewmodel.LoginViewModel
@@ -24,7 +25,9 @@ class LoginFragment : Fragment() {
     lateinit var viewModel: LoginViewModel
 
     var dialog: MaterialDialog? = null
-    var usuarioService = UsuarioServiceImpl.get()
+    val usuarioService by lazy {
+        UsuarioServiceImpl.get(context!!)
+    }
 
     companion object {
         fun newInstance() = LoginFragment()
