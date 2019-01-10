@@ -27,4 +27,6 @@
     <string name="ocorreu_erro_comunicacao_servidor">Ocorreu um erro de comunicação com o Servidor</string>
     <string name="sem_conexao">Voce esta sem conexão com a internet</string>
     <string name="ops">Ops</string>
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
 </resources>

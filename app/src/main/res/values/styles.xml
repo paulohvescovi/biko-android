@@ -45,6 +45,7 @@
         <item name="android:textColor">@color/textViewTextColor</item>
         <item name="fontFamily">@font/comfortaa_light</item>
         <item name="android:layout_width">wrap_content</item>
+        <item name="android:background">@android:color/transparent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
@@ -62,7 +63,7 @@
         <item name="fontFamily">@font/comfortaa_bold</item>
     </style>
 
-    <style name="EditTextLarge" parent="EditText">
+    <style name="EditTextBig" parent="EditText">
         <item name="android:layout_height">60dp</item>
     </style>
 

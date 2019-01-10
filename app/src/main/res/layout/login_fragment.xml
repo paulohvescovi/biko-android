@@ -67,7 +67,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_usuario"
-            style="@style/EditTextLarge"
+            style="@style/EditTextBig"
             android:layout_width="300dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
@@ -84,7 +84,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_senha"
-            style="@style/EditTextLarge"
+            style="@style/EditTextBig"
             android:layout_marginTop="12dp"
             android:drawableStart="@drawable/ic_senha_login"
             android:drawablePadding="10dp"

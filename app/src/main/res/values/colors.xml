@@ -5,6 +5,7 @@
     <color name="colorAccent">#f28275</color>
 
     <color name="interfacesBackgroundColor">#ffffff</color>
+    <color name="toolbarColor">#ffffff</color>
 
     <!--widgets colors-->
     <color name="textViewTextColor">#404040</color>
