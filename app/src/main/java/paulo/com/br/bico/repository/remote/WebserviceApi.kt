@@ -22,7 +22,7 @@ class WebserviceApi private constructor(){
         var gson = gsonBuilder.create()
 
         return Retrofit.Builder()
-                .baseUrl("http://192.168.88.146:28080/")
+                .baseUrl("http://200.195.135.2:9094/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .build().create(serviceClass)

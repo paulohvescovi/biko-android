@@ -6,5 +6,7 @@ class Constants {
 
         val HTTPCODE_403 = 403
         val HTTPCODE_200 = 200
+
+        val SENHA_SALVA = "senhaSalva"
     }
 }

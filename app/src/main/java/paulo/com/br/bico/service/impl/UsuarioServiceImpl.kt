@@ -1,18 +1,17 @@
 package paulo.com.br.bico.service.impl
 
 import android.content.Context
-import android.database.sqlite.SQLiteConstraintException
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import paulo.com.br.bico.configuration.AppDatabase
 import paulo.com.br.bico.configuration.Constants
 import paulo.com.br.bico.configuration.CoroutinesScope
 import paulo.com.br.bico.entity.Usuario
 import paulo.com.br.bico.model.UserCredentials
+import paulo.com.br.bico.repository.local.AppDatabase
+import paulo.com.br.bico.repository.local.SharedPreferences
 import paulo.com.br.bico.repository.remote.UsuarioRemoteRepository
 import paulo.com.br.bico.repository.remote.WebserviceApi
 import paulo.com.br.bico.service.UsuarioService
-import java.lang.Exception
 
 class UsuarioServiceImpl private constructor(context: Context): UsuarioService, CoroutinesScope() {
 
@@ -25,11 +24,20 @@ class UsuarioServiceImpl private constructor(context: Context): UsuarioService, 
         }
     }
 
-    override fun save(usuario: Usuario) {
-        try {
-            usuarioLocalRepository.insert(usuario)
-        } catch (exception: SQLiteConstraintException){
-            usuarioLocalRepository.update(usuario)
+    override fun salvarSenhaDigitada(context: Context, senha: String) {
+        scopeAsync.async {
+            SharedPreferences.save(context, Constants.SENHA_SALVA, senha)
+        }
+    }
+
+    override fun findSenhaDigitadaSalva(context: Context, success: (String) -> Unit, failure: () -> Unit) {
+        scopeAsync.async {
+            try {
+                val senha = SharedPreferences.get(context, Constants.SENHA_SALVA)
+                scopeUI.launch { success(senha) }
+            } catch (e: Throwable){
+                failure()
+            }
         }
     }
 
@@ -39,7 +47,6 @@ class UsuarioServiceImpl private constructor(context: Context): UsuarioService, 
             scopeUI.launch {
                 if (usuario != null) success(usuario) else failure()
             }
-
         }
     }
 
@@ -59,7 +66,7 @@ class UsuarioServiceImpl private constructor(context: Context): UsuarioService, 
 
                     val usuario = responseUsuarioLogado.body()!!
                     usuario.id = 1
-                    save(usuario)
+                    usuarioLocalRepository.save(usuario)
 
                     scopeUI.launch {
                         success(usuario)

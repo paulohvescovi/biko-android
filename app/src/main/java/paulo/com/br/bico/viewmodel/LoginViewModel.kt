@@ -1,13 +1,14 @@
 package paulo.com.br.bico.viewmodel
 
 import android.app.Application
+import android.content.Context
 import androidx.lifecycle.*
 import paulo.com.br.bico.entity.Usuario
 import paulo.com.br.bico.model.UserCredentials
 import paulo.com.br.bico.service.UsuarioService
 import paulo.com.br.bico.ui.states.LoginState
 
-class LoginViewModel (val usuarioService: UsuarioService, application: Application) :
+class LoginViewModel (val context: Context, val usuarioService: UsuarioService, application: Application) :
     AndroidViewModel(application), LifecycleObserver {
 
     var usuario = MutableLiveData<Usuario>().apply { value = Usuario() }
@@ -15,9 +16,17 @@ class LoginViewModel (val usuarioService: UsuarioService, application: Applicati
 
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     fun load() {
-        usuarioService.find(success = {
-            usuario.value = it
+        usuarioService.find(success = { user ->
+            usuarioService.findSenhaDigitadaSalva(context, success = {
+                user.senha = it
+                usuario.value = user
+            })
+            usuario.value = user
         })
+    }
+
+    fun logarClick():Unit {
+        loginState.value = LoginState.LOGARCLICK
     }
 
     fun logar():Unit {
@@ -40,7 +49,7 @@ class LoginViewModel (val usuarioService: UsuarioService, application: Applicati
         }, failure = {
             loginState.value = LoginState.USUARIO_SENHA_INVALIDO
         }, failureConnection = {
-            loginState.value = LoginState.SEM_INTERNET
+            loginState.value = LoginState.ERRO_CONEXAO_SERVIDOR
         })
 
     }

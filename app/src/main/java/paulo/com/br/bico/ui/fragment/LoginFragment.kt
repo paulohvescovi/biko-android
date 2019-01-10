@@ -10,11 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.afollestad.materialdialogs.MaterialDialog
+import kotlinx.android.synthetic.main.login_fragment.*
 import paulo.com.br.bico.R
 import paulo.com.br.bico.databinding.LoginFragmentBinding
+import paulo.com.br.bico.extensions.hide
+import paulo.com.br.bico.extensions.isOnline
 import paulo.com.br.bico.extensions.showAlert
 import paulo.com.br.bico.extensions.showLoading
-import paulo.com.br.bico.service.UsuarioService
 import paulo.com.br.bico.service.impl.UsuarioServiceImpl
 import paulo.com.br.bico.ui.states.LoginState
 import paulo.com.br.bico.viewmodel.LoginViewModel
@@ -25,6 +27,8 @@ class LoginFragment : Fragment() {
     lateinit var viewModel: LoginViewModel
 
     var dialog: MaterialDialog? = null
+    var loginConcluido: (() -> Unit)? = null
+
     val usuarioService by lazy {
         UsuarioServiceImpl.get(context!!)
     }
@@ -50,8 +54,18 @@ class LoginFragment : Fragment() {
         return binding.root
     }
 
-    fun tratarEstado(estado: LoginState?): Unit {
+    fun logarClick() {
+        if (isOnline()){
+            viewModel.logar()
+        } else {
+            dialog = showAlert(dialog, R.string.ops, R.string.sem_conexao)
+        }
+    }
+
+    fun tratarEstado(estado: LoginState?) {
         when (estado){
+            LoginState.LOGARCLICK -> logarClick()
+
             LoginState.USUARIO_NAO_INFORMADO -> dialog = showAlert(dialog, R.string.validacao, R.string.informe_o_usuario)
 
             LoginState.SENHA_NAO_INFORMADA -> dialog = showAlert(dialog, R.string.validacao, R.string.informe_a_senha)
@@ -60,14 +74,22 @@ class LoginFragment : Fragment() {
 
             LoginState.USUARIO_SENHA_INVALIDO -> dialog = showAlert(dialog, R.string.validacao, R.string.senha_invalida)
 
-            LoginState.USUARIO_LOGADO_SUCESSO -> dialog = showAlert(dialog, R.string.validacao, R.string.teste)
+            LoginState.USUARIO_LOGADO_SUCESSO -> {
+                direcionarParaTelaInicial()
+            }
 
-            LoginState.SEM_INTERNET -> dialog = showAlert(dialog, R.string.erro, R.string.ocorreu_erro_comunicacao_servidor)
+            LoginState.ERRO_CONEXAO_SERVIDOR -> dialog = showAlert(dialog, R.string.erro, R.string.ocorreu_erro_comunicacao_servidor)
         }
     }
 
+    private fun direcionarParaTelaInicial() {
+        usuarioService.salvarSenhaDigitada(this.context!!, edit_text_senha.text.toString())
+        hide(dialog)
+        loginConcluido?.invoke()
+    }
+
     fun createViewModel(application: Application): LoginViewModel {
-        val factory = LoginViewModelFactory(usuarioService, application)
+        val factory = LoginViewModelFactory(this.context!!, usuarioService, application)
 
         return ViewModelProviders.of(this, factory).get(LoginViewModel::class.java)
     }

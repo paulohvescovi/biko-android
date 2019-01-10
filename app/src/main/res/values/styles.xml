@@ -21,20 +21,20 @@
         <item name="md_font_title">@font/comfortaa</item>
         <item name="md_font_body">@font/comfortaa_light</item>
         <item name="md_font_button">@font/comfortaa</item>
-        <item name="md_corner_radius">16dp</item>
+        <item name="md_corner_radius">24dp</item>
     </style>
 
-    <style name="Dialog" parent="@android:style/Theme.Dialog">
-        <!--affolested-->
-        <item name="md_corner_radius">16dp</item>
-        <item name="md_ripple_color">@color/interfacesBackgroundColor</item>
-        <item name="md_color_title">@color/textViewTextColor</item>
-        <item name="md_color_content">@color/textViewTextColor</item>
-        <item name="md_font_title">@font/comfortaa</item>
-        <item name="md_font_body">@font/comfortaa_light</item>
-        <item name="md_font_button">@font/comfortaa_bold</item>
+    <!--<style name="Dialog" parent="@android:style/Theme.Dialog">-->
+        <!--&lt;!&ndash;affolested&ndash;&gt;-->
+        <!--<item name="md_corner_radius">24dp</item>-->
+        <!--<item name="md_ripple_color">@color/interfacesBackgroundColor</item>-->
+        <!--<item name="md_color_title">@color/textViewTextColor</item>-->
+        <!--<item name="md_color_content">@color/textViewTextColor</item>-->
+        <!--<item name="md_font_title">@font/comfortaa</item>-->
+        <!--<item name="md_font_body">@font/comfortaa_light</item>-->
+        <!--<item name="md_font_button">@font/comfortaa_bold</item>-->
 
-    </style>
+    <!--</style>-->
 
     <style name="FloatActionButton" parent="Widget.Design.FloatingActionButton">
         <item name="android:layout_width">wrap_content</item>

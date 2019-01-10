@@ -25,4 +25,6 @@
     <string name="registrar_se"><u>Cadastrar-se</u></string>
     <string name="erro">Erro</string>
     <string name="ocorreu_erro_comunicacao_servidor">Ocorreu um erro de comunicação com o Servidor</string>
+    <string name="sem_conexao">Voce esta sem conexão com a internet</string>
+    <string name="ops">Ops</string>
 </resources>

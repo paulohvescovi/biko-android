@@ -6,6 +6,7 @@
 
     <androidx.core.widget.ContentLoadingProgressBar
         style="@style/ProgressBar"
+        android:layout_margin="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

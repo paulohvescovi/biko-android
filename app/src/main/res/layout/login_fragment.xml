@@ -99,7 +99,7 @@
             android:id="@+id/button_login"
             style="@style/Button"
             android:layout_marginTop="24dp"
-            android:onClick="@{(v) -> viewModel.logar()}"
+            android:onClick="@{(v) -> viewModel.logarClick()}"
             android:text="@string/entrar"
             app:layout_constraintEnd_toEndOf="@+id/edit_text_senha"
             app:layout_constraintStart_toStartOf="@+id/edit_text_senha"
