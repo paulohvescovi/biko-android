@@ -11,6 +11,9 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import paulo.com.br.bico.R
+import paulo.com.br.bico.extensions.addFragmentTo
+import paulo.com.br.bico.ui.fragment.LoginFragment
+import paulo.com.br.bico.ui.fragment.ServicosFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +24,15 @@ class MainActivity : AppCompatActivity() {
 
         configureToolbar()
 
+        abrirFragmentInicial()
+    }
+
+    private fun abrirFragmentInicial() {
+        addFragmentTo(R.id.content_frame, createServicosFragment())
+    }
+
+    fun createServicosFragment(): ServicosFragment {
+        return ServicosFragment.newInstance()
     }
 
     private fun configureToolbar() {
