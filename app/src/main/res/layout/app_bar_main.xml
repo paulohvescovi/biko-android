@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/appBar"
-        android:background="@color/interfacesBackgroundColor"
+        android:background="@drawable/layout_corner"
         android:theme="@style/Widget.Design.AppBarLayout">
 
         <androidx.cardview.widget.CardView
@@ -28,8 +28,6 @@
                 android:layout_height="50dp"
                 android:background="@color/toolbarColor"
                 app:popupTheme="@style/Widget.MaterialComponents.Toolbar" >
-
-
 
             </androidx.appcompat.widget.Toolbar>
 

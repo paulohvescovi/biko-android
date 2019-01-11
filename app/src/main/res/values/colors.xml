@@ -6,12 +6,14 @@
 
     <color name="interfacesBackgroundColor">#ffffff</color>
     <color name="toolbarColor">#ffffff</color>
+    <color name="drawerBackgroundColor">#ffffff</color>
+    <color name="statusBarContinuationColor">#eb6553</color>
 
     <!--widgets colors-->
-    <color name="textViewTextColor">#404040</color>
+    <color name="textViewTextColor">#646464</color>
     <color name="editTexthintColor">#ababab</color>
     <color name="editTextBackgroundColor">#ffffff</color>
-    <color name="editTextBorderColor">#ea6151</color>
+    <color name="editTextBorderColor">#c0ee7466</color>
     <color name="editTextTextColor">#404040</color>
 
     <color name="textViewTextColorInverse">#ffffff</color>

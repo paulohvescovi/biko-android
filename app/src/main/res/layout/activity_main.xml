@@ -15,14 +15,105 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/drawerBackgroundColor"
         android:fitsSystemWindows="true"
-        android:background="@color/colorPrimary"
-        app:itemTextColor="@color/editTextTextColor"
-        app:itemIconTint="@color/colorPrimaryDark"
         app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer" />
+        app:itemIconTint="@color/colorPrimaryDark"
+        app:itemTextColor="@color/editTextTextColor">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="250dp">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_menu_selected"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/button_profile"
+                    android:id="@+id/image_profile_selected"
+                    app:layout_constraintEnd_toStartOf="@+id/button_profile"
+                    app:layout_constraintTop_toTopOf="@+id/button_profile" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_profile"
+                    style="@style/ButtonTransparent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/meu_perfil"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_menu_selected"
+                    app:layout_constraintBottom_toBottomOf="@+id/button_services"
+                    android:id="@+id/image_services_selected"
+                    app:layout_constraintEnd_toStartOf="@+id/button_services"
+                    app:layout_constraintTop_toTopOf="@+id/button_services" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_services"
+                    style="@style/ButtonTransparent"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/encontrar_servicos"
+                    app:layout_constraintEnd_toEndOf="@+id/button_profile"
+                    app:layout_constraintStart_toStartOf="@+id/button_profile"
+                    app:layout_constraintTop_toBottomOf="@+id/button_profile" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:visibility="gone"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_menu_selected"
+                    app:layout_constraintBottom_toBottomOf="@+id/button_products"
+                    android:id="@+id/image_products_selected"
+                    app:layout_constraintEnd_toStartOf="@+id/button_products"
+                    app:layout_constraintTop_toTopOf="@+id/button_products" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_products"
+                    style="@style/ButtonTransparent"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/encontrar_produtos"
+                    app:layout_constraintEnd_toEndOf="@+id/button_services"
+                    app:layout_constraintStart_toStartOf="@+id/button_services"
+                    app:layout_constraintTop_toBottomOf="@+id/button_services" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_logout"
+                    style="@style/ButtonTransparent"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/sair_do_app"
+                    app:layout_constraintEnd_toEndOf="@+id/button_products"
+                    app:layout_constraintStart_toStartOf="@+id/button_products"
+                    app:layout_constraintTop_toBottomOf="@+id/button_products" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </ScrollView>
+
+
+    </com.google.android.material.navigation.NavigationView>
+
 
 </androidx.drawerlayout.widget.DrawerLayout>

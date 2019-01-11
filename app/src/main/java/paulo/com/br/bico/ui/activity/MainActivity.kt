@@ -13,43 +13,28 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 import paulo.com.br.bico.R
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        configureToolbar()
+
+    }
+
+    private fun configureToolbar() {
         appBar.setOutlineProvider(null)
-
         setSupportActionBar(toolbar)
-
+        setTitle("")
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
-
-        val navigationView = findViewById(R.id.nav_view) as NavigationView
-        navigationView.setNavigationItemSelectedListener(this)
-
     }
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
-        val id = item.itemId
-
-        if (id == R.id.nav_rules) {
-            Toast.makeText(applicationContext, "Vakıf Kurallarını Seçtiniz.", Toast.LENGTH_SHORT).show()
-
-        } else if (id == R.id.nav_gallery) {
-            Toast.makeText(applicationContext, "Galeriyi seçtiniz.", Toast.LENGTH_SHORT).show()
-
-        } else if (id == R.id.nav_contact) {
-            Toast.makeText(applicationContext, "Bize Yazın seçtiniz.", Toast.LENGTH_SHORT).show()
-
-        }
-
+    private fun closeDrawer(){
         val drawer = findViewById(R.id.drawer_layout) as DrawerLayout
         drawer.closeDrawer(GravityCompat.START)
-        return true
     }
 }
