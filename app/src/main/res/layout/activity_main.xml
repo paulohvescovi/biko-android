@@ -24,12 +24,17 @@
         app:itemIconTint="@color/colorPrimaryDark"
         app:itemTextColor="@color/editTextTextColor">
 
+        <View
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="250dp"
+            android:visibility="gone"
+            style="@style/Divider"/>
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="250dp">
-
+            android:layout_marginTop="260dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -57,13 +62,20 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                <View
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    style="@style/Divider"
+                    app:layout_constraintBottom_toBottomOf="@+id/button_profile"
+                    app:layout_constraintTop_toTopOf="@+id/button_services" />
+
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginEnd="8dp"
                     android:src="@drawable/ic_menu_selected"
-                    app:layout_constraintBottom_toBottomOf="@+id/button_services"
                     android:id="@+id/image_services_selected"
+                    app:layout_constraintBottom_toBottomOf="@+id/button_services"
                     app:layout_constraintEnd_toStartOf="@+id/button_services"
                     app:layout_constraintTop_toTopOf="@+id/button_services" />
 
@@ -75,6 +87,13 @@
                     app:layout_constraintEnd_toEndOf="@+id/button_profile"
                     app:layout_constraintStart_toStartOf="@+id/button_profile"
                     app:layout_constraintTop_toBottomOf="@+id/button_profile" />
+
+                <View
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    style="@style/Divider"
+                    app:layout_constraintBottom_toBottomOf="@+id/button_services"
+                    app:layout_constraintTop_toTopOf="@+id/button_products" />
 
                 <ImageView
                     android:layout_width="30dp"
@@ -97,6 +116,13 @@
                     app:layout_constraintStart_toStartOf="@+id/button_services"
                     app:layout_constraintTop_toBottomOf="@+id/button_services" />
 
+
+                <View
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    style="@style/Divider"
+                    app:layout_constraintBottom_toBottomOf="@+id/button_products"
+                    app:layout_constraintTop_toTopOf="@+id/button_logout" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/button_logout"

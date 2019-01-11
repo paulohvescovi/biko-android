@@ -90,8 +90,10 @@
     <style name="ButtonTransparent" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="backgroundTint">@android:color/transparent</item>
         <item name="android:layout_width">200dp</item>
-        <item name="android:layout_height">65dp</item>
+        <item name="android:layout_height">55dp</item>
         <item name="android:fontFamily">@font/comfortaa_light</item>
+        <item name="android:textColor">@color/textViewTextColor</item>
+        <item name="android:textSize">12sp</item>
         <item name="cornerRadius">30dp</item>
     </style>
 
@@ -107,4 +109,13 @@
         <item name="android:indeterminateTint">@color/colorPrimary</item>
         <item name="android:indeterminateTintMode">src_in</item>
     </style>
+
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/dividerColor</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+    </style>
+
 </resources>
