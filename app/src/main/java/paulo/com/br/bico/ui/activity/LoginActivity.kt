@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import paulo.com.br.bico.R
+import paulo.com.br.bico.configuration.Constants
 import paulo.com.br.bico.extensions.addFragmentTo
 import paulo.com.br.bico.extensions.fullScreen
 import paulo.com.br.bico.ui.fragment.LoginFragment
@@ -30,9 +31,16 @@ class LoginActivity : AppCompatActivity(){
         (childFragment as? LoginFragment).let {
             it?.loginConcluido = {
                 val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
+                startActivityForResult(intent, Constants.EXIT_APP, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
             }
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == Constants.EXIT_APP){
+            this@LoginActivity.finish()
+        }
+        super.onActivityResult(requestCode, resultCode, data)
     }
 
 }

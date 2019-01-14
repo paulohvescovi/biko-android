@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
-import paulo.com.br.bico.databinding.ServicosFragmentBinding
+import paulo.com.br.bico.databinding.ServicesFragmentBinding
 
 class ServicesFragment : Fragment() {
 
@@ -16,7 +16,7 @@ class ServicesFragment : Fragment() {
 
     override fun onCreateView(@NonNull inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val binding: ServicosFragmentBinding = ServicosFragmentBinding.inflate(inflater, container, false)
+        val binding: ServicesFragmentBinding = ServicesFragmentBinding.inflate(inflater, container, false)
 
         return binding.root
 
