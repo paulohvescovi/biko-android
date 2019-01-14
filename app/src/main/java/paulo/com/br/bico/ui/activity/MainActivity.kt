@@ -1,19 +1,20 @@
 package paulo.com.br.bico.ui.activity
 
 import android.os.Bundle
-import android.view.MenuItem
-import android.widget.Toast
+import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
+import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import paulo.com.br.bico.R
 import paulo.com.br.bico.extensions.addFragmentTo
-import paulo.com.br.bico.ui.fragment.LoginFragment
-import paulo.com.br.bico.ui.fragment.ServicosFragment
+import paulo.com.br.bico.ui.fragment.AnnounceFragment
+import paulo.com.br.bico.ui.fragment.ProductsFragment
+import paulo.com.br.bico.ui.fragment.ServicesFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,16 +24,68 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         configureToolbar()
+        configureNavigation()
+        openInicialFragment()
 
-        abrirFragmentInicial()
     }
 
-    private fun abrirFragmentInicial() {
-        addFragmentTo(R.id.content_frame, createServicosFragment())
+    private fun configureNavigation() {
+        button_profile.setOnClickListener {
+
+        }
+        button_announce.setOnClickListener {
+
+        }
+        button_products.setOnClickListener {
+            openFragment(fragmentProducts())
+        }
+        button_services.setOnClickListener {
+            openFragment(fragmentServices())
+        }
+        button_announce.setOnClickListener {
+            openFragment(fragmentAnnounce())
+        }
+        button_logout.setOnClickListener {
+
+        }
     }
 
-    fun createServicosFragment(): ServicosFragment {
-        return ServicosFragment.newInstance()
+    private fun fragmentProducts(): Fragment {
+        hideMenuItemSelectedIndicator()
+        showMenuItemSelectedIndicator(image_products_selected)
+        return ProductsFragment.newInstance()
+    }
+
+    private fun fragmentAnnounce(): Fragment {
+        hideMenuItemSelectedIndicator()
+        showMenuItemSelectedIndicator(image_announce_selected)
+        return AnnounceFragment.newInstance()
+    }
+
+    private fun fragmentServices(): Fragment {
+        hideMenuItemSelectedIndicator()
+        showMenuItemSelectedIndicator(image_services_selected)
+        return ServicesFragment.newInstance()
+    }
+
+    private fun showMenuItemSelectedIndicator(image_view_selected: ImageView){
+        image_view_selected.visibility = View.VISIBLE
+    }
+
+    private fun hideMenuItemSelectedIndicator(){
+        image_profile_selected.visibility = View.GONE
+        image_announce_selected.visibility = View.GONE
+        image_products_selected.visibility = View.GONE
+        image_services_selected.visibility = View.GONE
+    }
+
+    private fun openInicialFragment() {
+        openFragment(ServicesFragment.newInstance())
+    }
+
+    private fun openFragment(fragment: Fragment) {
+        addFragmentTo(R.id.content_frame, fragment)
+        closeDrawer()
     }
 
     private fun configureToolbar() {

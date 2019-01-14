@@ -1,48 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.appbar.AppBarLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".ui.activity.MainActivity">
+    android:id="@+id/appBar"
+    android:background="@drawable/layout_corner"
+    android:theme="@style/Widget.Design.AppBarLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/appBar"
-        android:background="@drawable/layout_corner"
-        android:theme="@style/Widget.Design.AppBarLayout">
+        android:layout_height="match_parent"
+        app:cardCornerRadius="25dp"
+        android:elevation="10dp"
+        android:layout_margin="8dp"
+        app:layout_scrollFlags="enterAlways|scroll"
+        android:background="@android:color/transparent">
 
-        <androidx.cardview.widget.CardView
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:cardCornerRadius="25dp"
-            android:elevation="10dp"
-            android:layout_margin="8dp"
-            android:background="@android:color/transparent">
+            android:layout_height="50dp"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:background="@color/toolbarColor"
+            app:popupTheme="@style/Widget.MaterialComponents.Toolbar">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                app:layout_scrollFlags="scroll|enterAlways"
-                android:background="@color/toolbarColor"
-                app:popupTheme="@style/Widget.MaterialComponents.Toolbar" >
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:id="@+id/text_view_toolbar_pesquise_aqui"
+                android:text="Pesquise aqui..."/>
 
-            </androidx.appcompat.widget.Toolbar>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:id="@+id/edit_text_toolbar_pesquisar"
+                android:background="@null"
+                android:visibility="gone"
+                android:layout_height="match_parent" />
 
-        </androidx.cardview.widget.CardView>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </androidx.cardview.widget.CardView>
 
 
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <FrameLayout
-        android:id="@+id/container"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </FrameLayout>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</com.google.android.material.appbar.AppBarLayout>

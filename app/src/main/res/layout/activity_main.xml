@@ -8,15 +8,33 @@
     android:fitsSystemWindows="true"
     tools:openDrawer="start">
 
-    <FrameLayout
-        android:id="@+id/content_frame"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        tools:context=".ui.activity.MainActivity">
 
-    <include
-        layout="@layout/app_bar_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+       <include android:layout_height="wrap_content"
+           android:layout_width="match_parent"
+           layout="@layout/app_bar_main"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <FrameLayout
+                android:id="@+id/content_frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
@@ -72,6 +90,34 @@
                     android:layout_marginRight="50dp"
                     style="@style/Divider"
                     app:layout_constraintBottom_toBottomOf="@+id/button_profile"
+                    app:layout_constraintTop_toTopOf="@+id/button_announce" />
+
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_menu_selected"
+                    android:id="@+id/image_announce_selected"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@+id/button_profile"
+                    app:layout_constraintEnd_toStartOf="@+id/button_services"
+                    app:layout_constraintTop_toTopOf="@+id/button_services" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/button_announce"
+                    style="@style/ButtonTransparent"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/anunciar"
+                    app:layout_constraintEnd_toEndOf="@+id/button_profile"
+                    app:layout_constraintStart_toStartOf="@+id/button_profile"
+                    app:layout_constraintTop_toBottomOf="@+id/button_profile" />
+
+                <View
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    style="@style/Divider"
+                    app:layout_constraintBottom_toBottomOf="@+id/button_announce"
                     app:layout_constraintTop_toTopOf="@+id/button_services" />
 
                 <ImageView
@@ -89,9 +135,9 @@
                     style="@style/ButtonTransparent"
                     android:layout_marginTop="8dp"
                     android:text="@string/encontrar_servicos"
-                    app:layout_constraintEnd_toEndOf="@+id/button_profile"
-                    app:layout_constraintStart_toStartOf="@+id/button_profile"
-                    app:layout_constraintTop_toBottomOf="@+id/button_profile" />
+                    app:layout_constraintEnd_toEndOf="@+id/button_announce"
+                    app:layout_constraintStart_toStartOf="@+id/button_announce"
+                    app:layout_constraintTop_toBottomOf="@+id/button_announce" />
 
                 <View
                     android:layout_marginLeft="50dp"
@@ -120,7 +166,6 @@
                     app:layout_constraintEnd_toEndOf="@+id/button_services"
                     app:layout_constraintStart_toStartOf="@+id/button_services"
                     app:layout_constraintTop_toBottomOf="@+id/button_services" />
-
 
                 <View
                     android:layout_marginLeft="50dp"

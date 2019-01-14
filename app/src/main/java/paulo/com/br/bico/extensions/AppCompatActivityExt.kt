@@ -10,5 +10,5 @@ fun AppCompatActivity.fullScreen() {
 }
 
 fun AppCompatActivity.addFragmentTo(containerId: Int, fragment: Fragment, tag: String = "") {
-    supportFragmentManager.beginTransaction().add(containerId, fragment, tag).commit()
+    supportFragmentManager.beginTransaction().replace(containerId, fragment, tag).commit()
 }
