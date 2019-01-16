@@ -5,8 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import paulo.com.br.bico.databinding.CategorieServiceItemBinding
 import paulo.com.br.bico.entity.CategorieService
+import paulo.com.br.bico.entity.CategorieServiceFull
 
-class CategorieServiceAdapter(var items: List<CategorieService>) : RecyclerView.Adapter<CategorieServiceAdapter.ViewHolder>(), AdapterItemsContract{
+class CategorieServiceAdapter(var items: List<CategorieServiceFull>) : RecyclerView.Adapter<CategorieServiceAdapter.ViewHolder>(), AdapterItemsContract{
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding: CategorieServiceItemBinding = CategorieServiceItemBinding.inflate(inflater, parent, false)
@@ -14,7 +15,7 @@ class CategorieServiceAdapter(var items: List<CategorieService>) : RecyclerView.
     }
 
     override fun replaceItems(items: List<*>) {
-        this.items = items as List<CategorieService>
+        this.items = items as List<CategorieServiceFull>
         notifyDataSetChanged()
     }
 
@@ -28,8 +29,8 @@ class CategorieServiceAdapter(var items: List<CategorieService>) : RecyclerView.
 
     class ViewHolder(val binding: CategorieServiceItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(categorie: CategorieService) {
-            binding.categorie = categorie
+        fun bind(categorie: CategorieServiceFull) {
+            binding.category = categorie
             binding.executePendingBindings()
         }
     }

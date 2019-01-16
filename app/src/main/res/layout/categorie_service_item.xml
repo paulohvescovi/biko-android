@@ -6,8 +6,8 @@
 
     <data>
         <variable
-            name="categorie"
-            type="paulo.com.br.bico.entity.CategorieService" />
+            name="category"
+            type="paulo.com.br.bico.entity.CategorieServiceFull" />
     </data>
 
 
@@ -54,7 +54,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="@{categorie.descricao}"
+            android:text="@{category.descricao}"
             app:layout_constraintBottom_toBottomOf="@+id/image_categoria"
             app:layout_constraintEnd_toStartOf="@+id/image_expand"
             app:layout_constraintHorizontal_bias="0.0"
@@ -68,7 +68,7 @@
             android:layout_marginEnd="8dp"
             android:lines="2"
             android:ellipsize="marquee"
-            android:text="@{categorie.descricao}"
+            android:text="@{category.descricao}"
             app:layout_constraintEnd_toStartOf="@+id/image_expand"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView"
@@ -76,6 +76,7 @@
 
         <View
             style="@style/Divider"
+            android:layout_marginHorizontal="40dp"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

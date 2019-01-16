@@ -5,7 +5,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import paulo.com.br.bico.configuration.Constants
 import paulo.com.br.bico.configuration.CoroutinesScope
-import paulo.com.br.bico.entity.CategorieService
+import paulo.com.br.bico.entity.CategorieServiceFull
 import paulo.com.br.bico.repository.local.AppDatabase
 import paulo.com.br.bico.repository.remote.CategorieServiceRemoteRepository
 import paulo.com.br.bico.repository.remote.configuration.WebserviceApi
@@ -23,7 +23,7 @@ class CategorieServiceServiceImpl private constructor(context: Context): Categor
         }
     }
 
-    override fun allRemote(success: (List<CategorieService>) -> Unit, failure: () -> Unit) {
+    override fun allRemote(success: (List<CategorieServiceFull>) -> Unit, failure: () -> Unit) {
         scopeAsync.async {
             try {
                 val requestAllCategories = categorieRemoteRepository.all()
@@ -35,7 +35,10 @@ class CategorieServiceServiceImpl private constructor(context: Context): Categor
                     }
                 } else {
                     scopeUI.launch {
-                        success(responseAllCategories.body()!!)
+                        val result = responseAllCategories.body()!!.map {
+                            CategorieServiceFull(it, it.subCategoriaList)
+                        }
+                        success(result)
                     }
                 }
             } catch (e: Throwable) {
@@ -46,7 +49,7 @@ class CategorieServiceServiceImpl private constructor(context: Context): Categor
         }
     }
 
-    override fun allLocal(success: (List<CategorieService>) -> Unit, failure: () -> Unit) {
+    override fun allLocal(success: (List<CategorieServiceFull>) -> Unit, failure: () -> Unit) {
         scopeAsync.async {
             try {
                 val all = caregorieLocalRepository.all()

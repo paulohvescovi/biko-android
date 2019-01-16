@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-class CategorieService(@ColumnInfo(name = "descricao") var descricao: String? = null,
-                       @PrimaryKey var id: Int? = null
+data class CategorieService(@ColumnInfo(name = "descricao") var descricao: String? = null,
+                            @Transient var subCategoriaList: List<SubCategoriaService>? = null,
+                            @PrimaryKey var id: Int? = null
 )

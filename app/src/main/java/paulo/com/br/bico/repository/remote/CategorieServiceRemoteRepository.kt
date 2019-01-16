@@ -2,6 +2,7 @@ package paulo.com.br.bico.repository.remote
 
 import kotlinx.coroutines.Deferred
 import paulo.com.br.bico.entity.CategorieService
+import paulo.com.br.bico.entity.CategorieServiceFull
 import retrofit2.Response
 import retrofit2.http.GET
 
