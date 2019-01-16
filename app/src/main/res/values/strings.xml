@@ -39,4 +39,6 @@
     <string name="nao">Não</string>
     <string name="atencao">Atenção</string>
     <string name="deseja_sair_do_sistema">Deseja sair do App?</string>
+    <string name="pesquise_aqui">Pesquise aqui...</string>
+    <string name="loading_categories">Carregando Categorias</string>
 </resources>

@@ -24,11 +24,9 @@
             app:popupTheme="@style/Widget.MaterialComponents.Toolbar">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
+                style="@style/TextView"
                 android:id="@+id/text_view_toolbar_pesquise_aqui"
-                android:text="Pesquise aqui..."/>
+                android:text="@string/pesquise_aqui"/>
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"

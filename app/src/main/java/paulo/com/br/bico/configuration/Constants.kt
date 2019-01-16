@@ -4,6 +4,7 @@ class Constants {
     companion object {
         //actions
         val EXIT_APP: Int = 6513
+        val DELAY_POST: Long = 400
 
 
         val DATABASE = "bico"

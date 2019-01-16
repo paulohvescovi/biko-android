@@ -1,0 +1,13 @@
+package paulo.com.br.bico.entity
+
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.Relation
+
+
+@Entity
+class SubCategoriaService(@ColumnInfo(name = "descricao") var descricao: String? = null,
+                          @ColumnInfo(name = "categoriaId") var categoriaId: Int? = null,
+                          @PrimaryKey var id: Int? = null
+)

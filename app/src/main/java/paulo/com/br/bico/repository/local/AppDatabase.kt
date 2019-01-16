@@ -8,13 +8,16 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import paulo.com.br.bico.configuration.Constants
-import paulo.com.br.bico.dao.UsuarioLocalRepository
-import paulo.com.br.bico.entity.Usuario
+import paulo.com.br.bico.dao.UserLocalRepository
+import paulo.com.br.bico.entity.CategorieService
+import paulo.com.br.bico.entity.SubCategoriaService
+import paulo.com.br.bico.entity.User
 
-@Database(entities = arrayOf(Usuario::class), version = 2)
+@Database(entities = arrayOf(User::class, CategorieService::class, SubCategoriaService::class), version = 2)
 abstract class AppDatabase : RoomDatabase() {
 
-    abstract fun usuarioDao(): UsuarioLocalRepository
+    abstract fun usuarioDao(): UserLocalRepository
+    abstract fun categorieServiceDao(): CategorieServiceLocalRepository
 
     companion object {
 

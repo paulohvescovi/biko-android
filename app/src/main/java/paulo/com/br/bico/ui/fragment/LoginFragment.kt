@@ -17,8 +17,8 @@ import paulo.com.br.bico.extensions.hide
 import paulo.com.br.bico.extensions.isOnline
 import paulo.com.br.bico.extensions.showAlert
 import paulo.com.br.bico.extensions.showLoading
-import paulo.com.br.bico.service.impl.UsuarioServiceImpl
-import paulo.com.br.bico.ui.states.LoginState
+import paulo.com.br.bico.service.impl.UserServiceImpl
+import paulo.com.br.bico.ui.states.FragmentLoginState
 import paulo.com.br.bico.viewmodel.LoginViewModel
 import paulo.com.br.bico.viewmodelfactory.LoginViewModelFactory
 
@@ -30,7 +30,7 @@ class LoginFragment : Fragment() {
     var loginConcluido: (() -> Unit)? = null
 
     val usuarioService by lazy {
-        UsuarioServiceImpl.get(context!!)
+        UserServiceImpl.get(context!!)
     }
 
     companion object {
@@ -62,23 +62,23 @@ class LoginFragment : Fragment() {
         }
     }
 
-    fun tratarEstado(estado: LoginState?) {
+    fun tratarEstado(estado: FragmentLoginState?) {
         when (estado){
-            LoginState.LOGARCLICK -> logarClick()
+            FragmentLoginState.LOGARCLICK -> logarClick()
 
-            LoginState.USUARIO_NAO_INFORMADO -> dialog = showAlert(dialog, R.string.validacao, R.string.informe_o_usuario)
+            FragmentLoginState.USUARIO_NAO_INFORMADO -> dialog = showAlert(dialog, R.string.validacao, R.string.informe_o_usuario)
 
-            LoginState.SENHA_NAO_INFORMADA -> dialog = showAlert(dialog, R.string.validacao, R.string.informe_a_senha)
+            FragmentLoginState.SENHA_NAO_INFORMADA -> dialog = showAlert(dialog, R.string.validacao, R.string.informe_a_senha)
 
-            LoginState.LOGANDO -> dialog = showLoading(dialog, R.string.aguarde, R.string.acessando_o_sistema)
+            FragmentLoginState.LOGANDO -> dialog = showLoading(dialog, R.string.aguarde, R.string.acessando_o_sistema)
 
-            LoginState.USUARIO_SENHA_INVALIDO -> dialog = showAlert(dialog, R.string.validacao, R.string.senha_invalida)
+            FragmentLoginState.USUARIO_SENHA_INVALIDO -> dialog = showAlert(dialog, R.string.validacao, R.string.senha_invalida)
 
-            LoginState.USUARIO_LOGADO_SUCESSO -> {
+            FragmentLoginState.USUARIO_LOGADO_SUCESSO -> {
                 direcionarParaTelaInicial()
             }
 
-            LoginState.ERRO_CONEXAO_SERVIDOR -> dialog = showAlert(dialog, R.string.erro, R.string.ocorreu_erro_comunicacao_servidor)
+            FragmentLoginState.ERRO_CONEXAO_SERVIDOR -> dialog = showAlert(dialog, R.string.erro, R.string.ocorreu_erro_comunicacao_servidor)
         }
     }
 
