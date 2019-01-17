@@ -56,12 +56,17 @@
 
     <style name="TextViewBig" parent="TextView">
         <item name="android:textSize">24sp</item>
+        <item name="fontFamily">@font/comfortaa_light</item>
+    </style>
+
+    <style name="TextViewMedium" parent="TextView">
+        <item name="android:textSize">20sp</item>
         <item name="fontFamily">@font/comfortaa</item>
     </style>
 
     <style name="TextViewBigInverse" parent="TextViewInverse">
         <item name="android:textSize">24sp</item>
-        <item name="fontFamily">@font/comfortaa_bold</item>
+        <item name="fontFamily">@font/comfortaa</item>
     </style>
 
     <style name="EditTextBig" parent="EditText">

@@ -14,5 +14,6 @@ data class CategorieServiceFull(
 
 )
 {
-    fun descricao() = category?.descricao
+    fun description() = category?.descricao
+    fun descriptionDetail() = "Pedreiro, Pintor, Carpinteiro, Eletricista, Servente, Ajudante"
 }
