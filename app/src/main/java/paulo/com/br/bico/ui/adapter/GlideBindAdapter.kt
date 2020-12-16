@@ -12,4 +12,5 @@ object GlideBindAdapter {
     fun loadImage(view: ImageView, url: String) {
         Glide.with(view.getContext()).load(url).into(view)
     }
+    
 }
